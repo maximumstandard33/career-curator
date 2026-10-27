@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Curator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+    
+
+    <header>
+        <h1>Career Curator</h1>
+        <p>Your personal Career growth platform.</p>
+    </header>
+
+    <nav>
+        <a href="#dashboard" class="nav-link active">Dashboard</a>
+        <a href="#study" class="nav-link">Study Tracker</a>
+        <a href="#jobs" class="nav-link">Job Applications</a>
+    </nav>
+
+    <main>
+        <section id="dashboard" class="page-section active">
+            <h2>Welcome back</h2>
+            <p>Track your learning and keep your job search moving.</p>
+
+            <div class="dashboard-cards">
+                <button type="button" class="summary-card summary-card-button" data-target="study">
+                    <h3>📚 Study Hours</h3>
+                    <p id="studyhourstext">0 hours this week.</p>
+                    <p class="summary-note">Keep your learning habit strong and consistent.</p>
+                </button>
+
+                <button type="button" class="summary-card summary-card-button" data-target="jobs">
+                    <h3>💼 Job Applications</h3>
+                    <p id="jobcount">0 applications so far.</p>
+                    <p class="summary-note">Track every opportunity and stay active.</p>
+                </button>
+
+                <button type="button" class="summary-card summary-card-button" data-target="study">
+                    <h3>🎯 Daily Study Goal</h3>
+                    <p>Target: <span id="goaldisplay">3</span> hours per day.</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="summaryprogressfill"></div>
+                    </div>
+                    <p id="goalstatus">Keep going!</p>
+                </button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h4>Total</h4>
+                    <p id="statTotal">0</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Interviews</h4>
+                    <p id="statInterviews">0</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Offers</h4>
+                    <p id="statOffers">0</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Rejections</h4>
+                    <p id="statRejected">0</p>
+                </div>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-panel">
+                    <h3>Upcoming follow-ups</h3>
+                    <div id="upcomingFollowups" class="mini-list"></div>
+                </div>
+
+                <div class="overview-panel">
+                    <h3>Recent activity</h3>
+                    <div id="recentActivity" class="mini-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="study" class="page-section">
+            <h2>Study Tracker</h2>
+            <p>Track your daily learning progress and stay focused.</p>
+
+            <div class="tracker-card">
+                <h3>📚 Study Hours</h3>
+                <p id="studyhourstextpage">0 hours this week.</p>
+
+                <div class="study-buttons">
+                    <button id="studybutton" type="button">Add 1 Study Hour</button>
+                    <button id="resetbutton" type="button">Reset today's hours</button>
+                </div>
+
+                <h3>🎯 Daily Study Goal</h3>
+                <p>Target: <span id="goalpagevalue">3</span> hours per day.</p>
+                <label for="goalinput">Set daily goal (hours):</label>
+                <input type="number" id="goalinput" min="1" value="3" inputmode="numeric">
+                <button id="setgoalbutton" type="button">Set Goal</button>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressfill"></div>
+                </div>
+                <p id="goalstatuspage">Keep going!</p>
+            </div>
+        </section>
+
+        <section id="jobs" class="page-section">
+            <h2>Job Applications</h2>
+            <p>Track every role, update your status, and stay on top of your applications.</p>
+
+            <div class="job-layout">
+                <div class="job-card">
+                    <h3>Add a Job</h3>
+
+                    <div class="job-form">
+                        <label for="companyinput">Company Name</label>
+                        <input type="text" id="companyinput" placeholder="e.g. Google">
+
+                        <label for="roleinput">Job Title / Role</label>
+                        <input type="text" id="roleinput" placeholder="e.g. Frontend Developer">
+
+                        <label for="locationinput">Location</label>
+                        <input type="text" id="locationinput" placeholder="e.g. Remote / Bengaluru">
+
+                        <label for="salaryinput">Salary / CTC</label>
+                        <input type="text" id="salaryinput" placeholder="e.g. ₹15LPA or $120k">
+
+                        <label for="urlinput">Job Posting URL</label>
+                        <input type="url" id="urlinput" placeholder="https://example.com/job">
+
+                        <label for="dateinput">Application Date</label>
+                        <input type="date" id="dateinput">
+
+                        <label for="statusinput">Status</label>
+                        <select id="statusinput">
+                            <option value="Applied">Applied</option>
+                            <option value="Interview">Interview</option>
+                            <option value="Rejected">Rejected</option>
+                            <option value="Offer">Offer</option>
+                        </select>
+
+                        <label for="followupinput">Follow-up Date</label>
+                        <input type="date" id="followupinput">
+
+                        <label for="notesinput">Notes</label>
+                        <textarea id="notesinput" rows="3" placeholder="Optional notes about the role or company"></textarea>
+
+                        <button id="addjobbutton" type="button">Add Job</button>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <h3>Saved Applications</h3>
+
+                    <div class="job-controls">
+                        <input type="text" id="jobsearch" placeholder="Search by company or role">
+                        <select id="jobstatusfilter">
+                            <option value="All">All status</option>
+                            <option value="Applied">Applied</option>
+                            <option value="Interview">Interview</option>
+                            <option value="Rejected">Rejected</option>
+                            <option value="Offer">Offer</option>
+                        </select>
+                        <select id="jobsort">
+                            <option value="date-desc">Newest first</option>
+                            <option value="date-asc">Oldest first</option>
+                            <option value="followup-asc">Follow-up soonest</option>
+                        </select>
+                    </div>
+
+                    <div class="job-tools">
+                        <button id="exportjobsbutton" type="button" class="secondary-button">Export CSV</button>
+                        <button id="importjobsbutton" type="button" class="secondary-button">Import CSV</button>
+                        <input type="file" id="csvfileinput" accept=".csv" hidden>
+                    </div>
+
+                    <div class="summary-mini-grid">
+                        <div class="mini-stat">
+                            <span>Total</span>
+                            <strong id="jobsSummaryTotal">0</strong>
+                        </div>
+                        <div class="mini-stat">
+                            <span>Interviews</span>
+                            <strong id="jobsSummaryInterviews">0</strong>
+                        </div>
+                        <div class="mini-stat">
+                            <span>Offers</span>
+                            <strong id="jobsSummaryOffers">0</strong>
+                        </div>
+                        <div class="mini-stat">
+                            <span>Rejected</span>
+                            <strong id="jobsSummaryRejected">0</strong>
+                        </div>
+                    </div>
+
+                    <div id="joblist" class="job-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Career Curator &copy; 2026</p>
+    </footer>
+
+
+     <script src="script.js"></script>
+    
+</body>
+</html>
